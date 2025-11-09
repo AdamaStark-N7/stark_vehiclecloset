@@ -10,7 +10,7 @@ I would like to thank the developers of QBCore for creating a solid RP framework
 I would also like to thank the developers of Qbox for creating a solid, alternative RP framework for FiveM servers that allows for easy development of scripts to enhance gameplay.
 
 ## Overextended
-I would like to thank the amazing developers at Overextended for creating a stellar resources in Ox Lib.
+I would like to thank the amazing developers at Overextended for creating a stellar resource in Ox Lib.
 
 ## Community Ox
 I would like to thank the team at Community Ox for continuing on with Overextended's legacy by maintaining their resources for future use with Five M development.
