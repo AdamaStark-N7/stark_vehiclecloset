@@ -10,7 +10,7 @@ name 'stark_vehiclecloset'
 
 author 'Adama Stark'
 
-version '1.0.1'
+version '2.0.0'
 
 repository 'https://github.com/AdamaStark-N7/stark_vehiclecloset'
 
@@ -20,7 +20,6 @@ ox_lib 'locale'
 
 shared_scripts {
     '@ox_lib/init.lua',
-    '@lation_ui/init.lua'
 }
 
 client_scripts {
