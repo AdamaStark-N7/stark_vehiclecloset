@@ -398,7 +398,7 @@ RegisterNetEvent('stark_vehiclecloset:client:changeClothes', function()
     elseif Config.Framework == 'qbx' and GetResourceState('interact-sound') == 'started' then
         TriggerServerEvent('InteractSound_SV:PlayOnSource', 'Clothes1', 0.4)
     else
-        lib.print.warn("WARNING:" .. locale('error.framework_error_description'))
+        lib.print.warn("WARNING: " .. locale('error.framework_error_description'))
     end
     TriggerEvent('qb-clothing:client:openOutfitMenu')
 end)
