@@ -107,6 +107,14 @@ local function vehicleClosetMenu(vehicle)
             })
 
             lation_ui:showMenu('vehicle_closet_menu')
+        else
+            lib.notify({
+                title = locale('error.unsupported_menu_ui_title'),
+                description = locale('error.unsupported_menu_ui_description'),
+                duration = 5000,
+                position = 'center-right',
+                type = 'error'
+            })
         end
     elseif Config.Framework == 'qbx' then
         if Config.Menu == 'ox' then
@@ -183,7 +191,23 @@ local function vehicleClosetMenu(vehicle)
             })
 
             lation_ui:showMenu('vehicle_closet_menu')
+        else
+            lib.notify({
+                title = locale('error.unsupported_menu_ui_title'),
+                description = locale('error.unsupported_menu_ui_description'),
+                duration = 5000,
+                position = 'center-right',
+                type = 'error'
+            })
         end
+    else
+        lib.notify({
+            title = locale('error.unsupported_framework_error_title'),
+            description = locale('error.unsupported_framework_error_description'),
+            duration = 5000,
+            position = 'center-right',
+            type = 'error'
+        })
     end
 end
 
@@ -201,6 +225,7 @@ local function vehicleClosetProgress(vehicle)
                 }, {}, {}, {}, function()
                     vehicleClosetMenu(vehicle)
                 end, function()
+                    SetVehicleDoorShut(vehicle, 5, false)
                     QBCore.Functions.Notify(locale('error.cancellation_description'), 'error', 5000)
                 end)
         elseif Config.Progress.style == 'ox_bar' then
@@ -218,6 +243,7 @@ local function vehicleClosetProgress(vehicle)
                 }) then
                 vehicleClosetMenu(vehicle)
             else
+                SetVehicleDoorShut(vehicle, 5, false)
                 lib.notify({
                     title = locale('error.cancellation_title'),
                     description = locale('error.cancellation_description'),
@@ -242,6 +268,7 @@ local function vehicleClosetProgress(vehicle)
             then
                 vehicleClosetMenu(vehicle)
             else
+                SetVehicleDoorShut(vehicle, 5, false)
                 lib.notify({
                     title = locale('error.cancellation_title'),
                     description = locale('error.cancellation_description'),
@@ -270,6 +297,7 @@ local function vehicleClosetProgress(vehicle)
                 }) then
                 vehicleClosetMenu(vehicle)
             else
+                SetVehicleDoorShut(vehicle, 5, false)
                 lation_ui:notify({
                     title = locale('error.cancellation_title'),
                     message = locale('error.cancellation_description'),
@@ -277,6 +305,14 @@ local function vehicleClosetProgress(vehicle)
                     position = 'center-right',
                 })
             end
+        else
+            lib.notify({
+                title = locale('error.unsupported_progress_ui_title'),
+                description = locale('error.unsupported_progress_ui_description'),
+                duration = 5000,
+                position = 'center-right',
+                type = 'error'
+            })
         end
     elseif Config.Framework == 'qbx' then
         if Config.Progress.style == 'ox_bar' then
@@ -294,6 +330,7 @@ local function vehicleClosetProgress(vehicle)
                 }) then
                 vehicleClosetMenu(vehicle)
             else
+                SetVehicleDoorShut(vehicle, 5, false)
                 lib.notify({
                     title = locale('error.cancellation_title'),
                     description = locale('error.cancellation_description'),
@@ -318,6 +355,7 @@ local function vehicleClosetProgress(vehicle)
             then
                 vehicleClosetMenu(vehicle)
             else
+                SetVehicleDoorShut(vehicle, 5, false)
                 lib.notify({
                     title = locale('error.cancellation_title'),
                     description = locale('error.cancellation_description'),
@@ -346,6 +384,7 @@ local function vehicleClosetProgress(vehicle)
                 }) then
                 vehicleClosetMenu(vehicle)
             else
+                SetVehicleDoorShut(vehicle, 5, false)
                 lation_ui:notify({
                     title = locale('error.cancellation_title'),
                     message = locale('error.cancellation_description'),
@@ -353,7 +392,23 @@ local function vehicleClosetProgress(vehicle)
                     position = 'center-right',
                 })
             end
+        else
+            lib.notify({
+                title = locale('error.unsupported_progress_ui_title'),
+                description = locale('error.unsupported_progress_ui_description'),
+                duration = 5000,
+                position = 'center-right',
+                type = 'error'
+            })
         end
+    else
+        lib.notify({
+            title = locale('error.unsupported_framework_error_title'),
+            description = locale('error.unsupported_framework_error_description'),
+            duration = 5000,
+            position = 'center-right',
+            type = 'error'
+        })
     end
 end
 
@@ -387,6 +442,14 @@ local function hasKeys(vehicle)
         else
             vehicleClosetProgress(vehicle)
         end
+    else
+        lib.notify({
+            title = locale('error.unsupported_framework_error_title'),
+            description = locale('error.unsupported_framework_error_description'),
+            duration = 5000,
+            position = 'center-right',
+            type = 'error'
+        })
     end
 end
 
@@ -433,6 +496,14 @@ CreateThread(function()
                 SetVehicleDoorOpen(Vehicle, 5, false, false)
                 hasKeys(Vehicle)
             end
+        })
+    else
+        lib.notify({
+            title = locale('error.unsupported_target_title'),
+            description = locale('error.unsupported_target_description'),
+            duration = 5000,
+            position = 'center-right',
+            type = 'error'
         })
     end
 end)
