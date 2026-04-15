@@ -115,6 +115,8 @@ local function vehicleClosetMenu(vehicle)
                 position = 'center-right',
                 type = 'error'
             })
+            Wait(2000)
+            SetVehicleDoorShut(vehicle, 5, false)
         end
     elseif Config.Framework == 'qbx' then
         if Config.Menu == 'ox' then
@@ -199,6 +201,8 @@ local function vehicleClosetMenu(vehicle)
                 position = 'center-right',
                 type = 'error'
             })
+            Wait(2000)
+            SetVehicleDoorShut(vehicle, 5, false)
         end
     else
         lib.notify({
