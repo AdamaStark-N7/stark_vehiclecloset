@@ -225,8 +225,9 @@ local function vehicleClosetProgress(vehicle)
                 }, {}, {}, {}, function()
                     vehicleClosetMenu(vehicle)
                 end, function()
-                    SetVehicleDoorShut(vehicle, 5, false)
                     QBCore.Functions.Notify(locale('error.cancellation_description'), 'error', 5000)
+                    Wait(2000)
+                    SetVehicleDoorShut(vehicle, 5, false)
                 end)
         elseif Config.Progress.style == 'ox_bar' then
             if lib.progressBar({
@@ -243,13 +244,14 @@ local function vehicleClosetProgress(vehicle)
                 }) then
                 vehicleClosetMenu(vehicle)
             else
-                SetVehicleDoorShut(vehicle, 5, false)
                 lib.notify({
                     title = locale('error.cancellation_title'),
                     description = locale('error.cancellation_description'),
                     position = 'center-right',
                     type = 'error'
                 })
+                Wait(2000)
+                SetVehicleDoorShut(vehicle, 5, false)
             end
         elseif Config.Progress.style == 'ox_circle' then
             if lib.progressCircle({
@@ -268,13 +270,14 @@ local function vehicleClosetProgress(vehicle)
             then
                 vehicleClosetMenu(vehicle)
             else
-                SetVehicleDoorShut(vehicle, 5, false)
                 lib.notify({
                     title = locale('error.cancellation_title'),
                     description = locale('error.cancellation_description'),
                     position = 'center-right',
                     type = 'error'
                 })
+                Wait(2000)
+                SetVehicleDoorShut(vehicle, 5, false)
             end
         elseif Config.Progress.style == 'lation' then
             local lation_ui = exports.lation_ui
@@ -297,13 +300,14 @@ local function vehicleClosetProgress(vehicle)
                 }) then
                 vehicleClosetMenu(vehicle)
             else
-                SetVehicleDoorShut(vehicle, 5, false)
                 lation_ui:notify({
                     title = locale('error.cancellation_title'),
                     message = locale('error.cancellation_description'),
                     type = 'error',
                     position = 'center-right',
                 })
+                Wait(2000)
+                SetVehicleDoorShut(vehicle, 5, false)
             end
         else
             lib.notify({
@@ -313,6 +317,8 @@ local function vehicleClosetProgress(vehicle)
                 position = 'center-right',
                 type = 'error'
             })
+            Wait(2000)
+            SetVehicleDoorShut(vehicle, 5, false)
         end
     elseif Config.Framework == 'qbx' then
         if Config.Progress.style == 'ox_bar' then
@@ -330,13 +336,14 @@ local function vehicleClosetProgress(vehicle)
                 }) then
                 vehicleClosetMenu(vehicle)
             else
-                SetVehicleDoorShut(vehicle, 5, false)
                 lib.notify({
                     title = locale('error.cancellation_title'),
                     description = locale('error.cancellation_description'),
                     position = 'center-right',
                     type = 'error'
                 })
+                Wait(2000)
+                SetVehicleDoorShut(vehicle, 5, false)
             end
         elseif Config.Progress.style == 'ox_circle' then
             if lib.progressCircle({
@@ -355,13 +362,14 @@ local function vehicleClosetProgress(vehicle)
             then
                 vehicleClosetMenu(vehicle)
             else
-                SetVehicleDoorShut(vehicle, 5, false)
                 lib.notify({
                     title = locale('error.cancellation_title'),
                     description = locale('error.cancellation_description'),
                     position = 'center-right',
                     type = 'error'
                 })
+                Wait(2000)
+                SetVehicleDoorShut(vehicle, 5, false)
             end
         elseif Config.Progress.style == 'lation' then
             local lation_ui = exports.lation_ui
@@ -384,13 +392,14 @@ local function vehicleClosetProgress(vehicle)
                 }) then
                 vehicleClosetMenu(vehicle)
             else
-                SetVehicleDoorShut(vehicle, 5, false)
                 lation_ui:notify({
                     title = locale('error.cancellation_title'),
                     message = locale('error.cancellation_description'),
                     type = 'error',
                     position = 'center-right',
                 })
+                Wait(2000)
+                SetVehicleDoorShut(vehicle, 5, false)
             end
         else
             lib.notify({
@@ -400,6 +409,8 @@ local function vehicleClosetProgress(vehicle)
                 position = 'center-right',
                 type = 'error'
             })
+            Wait(2000)
+            SetVehicleDoorShut(vehicle, 5, false)
         end
     else
         lib.notify({
@@ -450,6 +461,8 @@ local function hasKeys(vehicle)
             position = 'center-right',
             type = 'error'
         })
+        Wait(2000)
+        SetVehicleDoorShut(vehicle, 5, false)
     end
 end
 
