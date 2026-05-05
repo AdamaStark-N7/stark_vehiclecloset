@@ -1,8 +1,7 @@
-if not lib.checkDependency('ox_lib', '3.32.0', true) then return end
+if not lib.checkDependency('ox_lib', '3.33.0', true) then return end
 
 local Config = require 'shared.config'
 
--- Functions
 local function vehicleClosetMenu(vehicle)
     if Config.Framework == 'qb' then
         if Config.Menu == 'qb' then
@@ -470,7 +469,6 @@ local function hasKeys(vehicle)
     end
 end
 
--- Event
 RegisterNetEvent('stark_vehiclecloset:client:changeClothes', function()
     if not GetInvokingResource() then return end
     if Config.Framework == 'qb' then
@@ -483,7 +481,6 @@ RegisterNetEvent('stark_vehiclecloset:client:changeClothes', function()
     TriggerEvent('qb-clothing:client:openOutfitMenu')
 end)
 
--- Main Thread
 CreateThread(function()
     if Config.Target == 'qb' and GetResourceState('qb-target') == 'started' then
         exports['qb-target']:AddTargetBone('boot', {
