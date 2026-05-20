@@ -621,13 +621,31 @@ local function hasKeys(vehicle)
                 if hasKey then
                     vehicleClosetProgress(vehicle)
                 else
-                    lib.notify({
-                        title = locale('error.vehicle_keys_error_title'),
-                        description = locale('error.vehicle_keys_error_description'),
-                        duration = 5000,
-                        position = 'center-right',
-                        type = 'error'
-                    })
+                    -- Player Doesn't Have Keys
+                    if Config.Notify == 'ox' then
+                        lib.notify({
+                            title = locale('error.vehicle_keys_error_title'),
+                            description = locale('error.vehicle_keys_error_description'),
+                            duration = 5000,
+                            position = 'center-right',
+                            type = 'error'
+                        })
+                        Wait(2000)
+                        SetVehicleDoorShut(vehicle, 5, false)
+                    elseif Config.Notify == 'lation' then
+                        lation_ui:notify({
+                            title = locale('error.vehicle_keys_error_title'),
+                            message = locale('error.vehicle_keys_error_description'),
+                            type = 'error',
+                            duration = 5000,
+                            position = 'center-right'
+                        })
+                        Wait(2000)
+                        SetVehicleDoorShut(vehicle, 5, false)
+                    else
+                        lib.print.error(locale('error.notification_warning'))
+                        SetVehicleDoorShut(vehicle, 5, false)
+                    end
                 end
             elseif Config.VehicleKeys.type == 'wasabi' then
                 local wasabi_carlock = exports.wasabi_carlock
@@ -635,34 +653,65 @@ local function hasKeys(vehicle)
                 if hasKey then
                     vehicleClosetProgress(vehicle)
                 else
+                    -- Player Doesn't Have Keys
+                    if Config.Notify == 'ox' then
+                        lib.notify({
+                            title = locale('error.vehicle_keys_error_title'),
+                            description = locale('error.vehicle_keys_error_description'),
+                            duration = 5000,
+                            position = 'center-right',
+                            type = 'error'
+                        })
+                        Wait(2000)
+                        SetVehicleDoorShut(vehicle, 5, false)
+                    elseif Config.Notify == 'lation' then
+                        lation_ui:notify({
+                            title = locale('error.vehicle_keys_error_title'),
+                            message = locale('error.vehicle_keys_error_description'),
+                            type = 'error',
+                            duration = 5000,
+                            position = 'center-right'
+                        })
+                        Wait(2000)
+                        SetVehicleDoorShut(vehicle, 5, false)
+                    else
+                        lib.print.error(locale('error.notification_warning'))
+                        SetVehicleDoorShut(vehicle, 5, false)
+                    end
+                end
+            else
+                -- Unsupported Vehicle Key Resource
+                if Config.Notify == 'ox' then
                     lib.notify({
-                        title = locale('error.vehicle_keys_error_title'),
-                        description = locale('error.vehicle_keys_error_description'),
+                        title = locale('error.unsupported_vehicle_key_title'),
+                        description = locale('error.unsupported_vehicle_key_description'),
                         duration = 5000,
                         position = 'center-right',
                         type = 'error'
                     })
+                    Wait(2000)
+                    SetVehicleDoorShut(vehicle, 5, false)
+                elseif Config.Notify == 'lation' then
+                    lation_ui:notify({
+                        title = locale('error.unsupported_vehicle_key_title'),
+                        message = locale('error.unsupported_vehicle_key_description'),
+                        type = 'error',
+                        duration = 5000,
+                        position = 'center-right'
+                    })
+                    Wait(2000)
+                    SetVehicleDoorShut(vehicle, 5, false)
+                else
+                    lib.print.error(locale('error.notification_warning'))
+                    SetVehicleDoorShut(vehicle, 5, false)
                 end
-            else
-                lib.notify({
-                    title = locale('error.unsupported_vehicle_key_title'),
-                    description = locale('error.unsupported_vehicle_key_description'),
-                    duration = 5000,
-                    position = 'center-right',
-                    type = 'error'
-                })
             end
         else
+            -- Vehicle Keys Aren't Required
             vehicleClosetProgress(vehicle)
         end
     else
-        lib.notify({
-            title = locale('error.unsupported_framework_error_title'),
-            description = locale('error.unsupported_framework_error_description'),
-            duration = 5000,
-            position = 'center-right',
-            type = 'error'
-        })
+        lib.print.error(locale('error.unsupported_framework_error_description'))
         Wait(2000)
         SetVehicleDoorShut(vehicle, 5, false)
     end
