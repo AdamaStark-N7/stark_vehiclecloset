@@ -241,13 +241,7 @@ local function vehicleClosetMenu(vehicle)
             end
         end
     else
-        lib.notify({
-            title = locale('error.unsupported_framework_error_title'),
-            description = locale('error.unsupported_framework_error_description'),
-            duration = 5000,
-            position = 'center-right',
-            type = 'error'
-        })
+        lib.print.error(locale('error.unsupported_framework_error_description'))
     end
 end
 
