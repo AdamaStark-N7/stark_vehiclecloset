@@ -740,7 +740,8 @@ CreateThread(function()
                         local Vehicle = entity
                         SetVehicleDoorOpen(Vehicle, 5, false, false)
                         hasKeys(Vehicle)
-                    end
+                    end,
+                    job = 'all'
                 }
             },
             distance = 3.0
@@ -759,12 +760,6 @@ CreateThread(function()
             end
         })
     else
-        lib.notify({
-            title = locale('error.unsupported_target_title'),
-            description = locale('error.unsupported_target_description'),
-            duration = 5000,
-            position = 'center-right',
-            type = 'error'
-        })
+        lib.print.error(locale('error.unsupported_target_description'))
     end
 end)
