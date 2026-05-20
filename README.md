@@ -59,6 +59,8 @@ Stark Vehicle Closet is a resource that allows for players to change their outfi
 # Coming Soon
 1. Renewed Vehiclekeys Support
     - Preview or Purchase: [Renewed Vehiclekeys](https://renewed.tebex.io/package/5885692)
+2. Wasabi Scripts Complete UI Kit Support
+    - Preview or Purchase: [Wasabi Complete UI Kit](https://www.wasabiscripts.com/product/7037645)
 
 # Previews
 

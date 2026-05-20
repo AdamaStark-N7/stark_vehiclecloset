@@ -8,6 +8,7 @@ local ox_target = exports.ox_target
 
 local function vehicleClosetMenu(vehicle)
     if Config.Framework == 'qb' then
+        local QBCore = exports['qb-core']:GetCoreObject()
         if Config.Menu == 'qb' then
             local closetMenu = {
                 {
@@ -110,15 +111,34 @@ local function vehicleClosetMenu(vehicle)
 
             lation_ui:showMenu('vehicle_closet_menu')
         else
-            lib.notify({
-                title = locale('error.unsupported_menu_ui_title'),
-                description = locale('error.unsupported_menu_ui_description'),
-                duration = 5000,
-                position = 'center-right',
-                type = 'error'
-            })
-            Wait(2000)
-            SetVehicleDoorShut(vehicle, 5, false)
+            if Config.Notify == 'ox' then
+                lib.notify({
+                    title = locale('error.unsupported_menu_ui_title'),
+                    description = locale('error.unsupported_menu_ui_description'),
+                    duration = 5000,
+                    position = 'center-right',
+                    type = 'error'
+                })
+                Wait(2000)
+                SetVehicleDoorShut(vehicle, 5, false)
+            elseif Config.Notify == 'lation' then
+                lation_ui:notify({
+                    title = locale('error.unsupported_menu_ui_title'),
+                    message = locale('error.unsupported_menu_ui_description'),
+                    type = 'error',
+                    duration = 5000,
+                    position = 'center-right'
+                })
+                Wait(2000)
+                SetVehicleDoorShut(vehicle, 5, false)
+            elseif Config.Notify == 'qb' then
+                QBCore.Functions.Notify(locale('error.unsupported_menu_ui_description'), 'error', 5000)
+                Wait(2000)
+                SetVehicleDoorShut(vehicle, 5, false)
+            else
+                lib.print.error(locale('error.notification_warning'))
+                SetVehicleDoorShut(vehicle, 5, false)
+            end
         end
     elseif Config.Framework == 'qbx' then
         if Config.Menu == 'ox' then
@@ -195,15 +215,30 @@ local function vehicleClosetMenu(vehicle)
 
             lation_ui:showMenu('vehicle_closet_menu')
         else
-            lib.notify({
-                title = locale('error.unsupported_menu_ui_title'),
-                description = locale('error.unsupported_menu_ui_description'),
-                duration = 5000,
-                position = 'center-right',
-                type = 'error'
-            })
-            Wait(2000)
-            SetVehicleDoorShut(vehicle, 5, false)
+            if Config.Notify == 'ox' then
+                lib.notify({
+                    title = locale('error.unsupported_menu_ui_title'),
+                    description = locale('error.unsupported_menu_ui_description'),
+                    duration = 5000,
+                    position = 'center-right',
+                    type = 'error'
+                })
+                Wait(2000)
+                SetVehicleDoorShut(vehicle, 5, false)
+            elseif Config.Notify == 'lation' then
+                lation_ui:notify({
+                    title = locale('error.unsupported_menu_ui_title'),
+                    message = locale('error.unsupported_menu_ui_description'),
+                    type = 'error',
+                    duration = 5000,
+                    position = 'center-right'
+                })
+                Wait(2000)
+                SetVehicleDoorShut(vehicle, 5, false)
+            else
+                lib.print.error(locale('error.notification_warning'))
+                SetVehicleDoorShut(vehicle, 5, false)
+            end
         end
     else
         lib.notify({
