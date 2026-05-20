@@ -10,7 +10,7 @@ name 'stark_vehiclecloset'
 
 author 'Adama Stark'
 
-version '3.0.0'
+version '3.1.0'
 
 repository 'https://github.com/AdamaStark-N7/stark_vehiclecloset'
 
