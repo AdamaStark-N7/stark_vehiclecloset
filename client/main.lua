@@ -353,15 +353,34 @@ local function vehicleClosetProgress(vehicle)
                 SetVehicleDoorShut(vehicle, 5, false)
             end
         else
-            lib.notify({
-                title = locale('error.unsupported_progress_ui_title'),
-                description = locale('error.unsupported_progress_ui_description'),
-                duration = 5000,
-                position = 'center-right',
-                type = 'error'
-            })
-            Wait(2000)
-            SetVehicleDoorShut(vehicle, 5, false)
+            if Config.Notify == 'ox' then
+                lib.notify({
+                    title = locale('error.unsupported_progress_ui_title'),
+                    description = locale('error.unsupported_progress_ui_description'),
+                    duration = 5000,
+                    position = 'center-right',
+                    type = 'error'
+                })
+                Wait(2000)
+                SetVehicleDoorShut(vehicle, 5, false)
+            elseif Config.Notify == 'lation' then
+                lation_ui:notify({
+                    title = locale('error.unsupported_progress_ui_title'),
+                    message = locale('error.unsupported_progress_ui_description'),
+                    type = 'error',
+                    duration = 5000,
+                    position = 'center-right'
+                })
+                Wait(2000)
+                SetVehicleDoorShut(vehicle, 5, false)
+            elseif Config.Notify == 'qb' then
+                QBCore.Functions.Notify(locale('error.unsupported_progress_ui_description'), 'error', 5000)
+                Wait(2000)
+                SetVehicleDoorShut(vehicle, 5, false)
+            else
+                lib.print.error(locale('error.notification_warning'))
+                SetVehicleDoorShut(vehicle, 5, false)
+            end
         end
     elseif Config.Framework == 'qbx' then
         if Config.Progress.style == 'ox_bar' then
@@ -453,24 +472,33 @@ local function vehicleClosetProgress(vehicle)
                 SetVehicleDoorShut(vehicle, 5, false)
             end
         else
-            lib.notify({
-                title = locale('error.unsupported_progress_ui_title'),
-                description = locale('error.unsupported_progress_ui_description'),
-                duration = 5000,
-                position = 'center-right',
-                type = 'error'
-            })
-            Wait(2000)
-            SetVehicleDoorShut(vehicle, 5, false)
+            if Config.Notify == 'ox' then
+                lib.notify({
+                    title = locale('error.unsupported_progress_ui_title'),
+                    description = locale('error.unsupported_progress_ui_description'),
+                    duration = 5000,
+                    position = 'center-right',
+                    type = 'error'
+                })
+                Wait(2000)
+                SetVehicleDoorShut(vehicle, 5, false)
+            elseif Config.Notify == 'lation' then
+                lation_ui:notify({
+                    title = locale('error.unsupported_progress_ui_title'),
+                    message = locale('error.unsupported_progress_ui_description'),
+                    type = 'error',
+                    duration = 5000,
+                    position = 'center-right'
+                })
+                Wait(2000)
+                SetVehicleDoorShut(vehicle, 5, false)
+            else
+                lib.print.error(locale('error.notification_warning'))
+                SetVehicleDoorShut(vehicle, 5, false)
+            end
         end
     else
-        lib.notify({
-            title = locale('error.unsupported_framework_error_title'),
-            description = locale('error.unsupported_framework_error_description'),
-            duration = 5000,
-            position = 'center-right',
-            type = 'error'
-        })
+        lib.print.error(locale('error.unsupported_framework_error_description'))
     end
 end
 
